@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+    {% block title %}{{ playlist.name }}{% endblock %}
+
+    {% block content %}
+    <h1>{{ playlist.name }}</h1>
+    <h2>Movies in this playlist:</h2>
+    <ul>
+    {% for movie in playlist.movies.all %}
+        <li><a href="{% url 'movie_detail' movie.id %}">{{ movie.title }}</a></li>
+    {% endfor %}
+    </ul>
+    {% endblock %}
