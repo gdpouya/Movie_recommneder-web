@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} Home {% endblock %}
+{% block title %} Movie Recommender {% endblock %}
 
 {% block content %}
 
@@ -9,15 +9,25 @@
         <b>------------</b>
         <a href="{% url 'create' %}"> Add Movie </a>
     {% else %}
-        <a href="{% url 'user_register' %}">Register</a>
-        <a href="{% url 'user_login' %}">Login</a>
-    {% endif %}
+    <div class="row justify-content-end">
+        <div class="row col-lg-3 col-md-6 col-sm-12 justify-content-between my-2 px-4">
+            <div class="col">   
+                <a href="{% url 'user_register' %}"  class="btn p-2 btn-primary w-100"> Sign up</a>
+            </div>
+            <div class="col">
+                <a href="{% url 'user_login' %}"  class="btn p-2 btn-outline-primary w-100"> Sign in</a>
+            </div>
+        </div>
+    </div>
+        {% endif %}
 
 
-    <div class="card">
+    <div class="card row">
         {% for movie in movies %}
-            <a class="card-body" href="{% url 'details' movie.id %}">{{ movie.title }}</a><br/>
-        {% endfor %}
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <a class="card-body p-1 " href="{% url 'details' movie.id %}">{{ movie.title }}</a><br/>
+        </div>
+            {% endfor %}
     </div>
 
 {% endblock %}
